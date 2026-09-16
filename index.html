@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A personal dashboard featuring live real-time clock, personalized greeting, customizable name, and daily focus widget.">
+  <title>Yu Chou • Personal Hub</title>
+  
+  <!-- Google Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Animated Aurora Background Mesh -->
+  <div class="aurora-bg" aria-hidden="true">
+    <div class="aurora-orb orb-1"></div>
+    <div class="aurora-orb orb-2"></div>
+    <div class="aurora-orb orb-3"></div>
+    <div class="aurora-noise"></div>
+  </div>
+
+  <main class="dashboard-wrapper">
+    <!-- Top Bar Navigation / System Bar -->
+    <header class="top-bar">
+      <div class="system-status-pill" id="status-pill">
+        <span class="status-dot"></span>
+        <span class="status-text" id="status-text">Live Sync Active</span>
+      </div>
+
+      <div class="top-actions">
+        <button id="format-toggle" class="control-pill-btn" aria-label="Toggle 12-hour or 24-hour time format" title="Toggle 12h / 24h format">
+          <span class="pill-label">Format:</span>
+          <span id="format-label" class="pill-value">12h</span>
+        </button>
+        <button id="copy-time-btn" class="control-pill-btn icon-only" aria-label="Copy current timestamp" title="Copy Timestamp">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+        </button>
+        <a href="https://github.com/taemiyu/AIOT-DIC-0916" target="_blank" rel="noopener noreferrer" class="control-pill-btn icon-only" aria-label="GitHub Repository" title="View repository on GitHub">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+          </svg>
+        </a>
+      </div>
+    </header>
+
+    <!-- Main Identity & Greeting Section -->
+    <section class="identity-section" aria-labelledby="greeting-header">
+      <div class="greeting-badge" id="greeting-badge">
+        <span class="greeting-icon" id="greeting-icon">✨</span>
+        <span class="greeting-period" id="greeting-period">Good day</span>
+      </div>
+
+      <div class="name-display-container">
+        <h1 id="greeting-header" class="greeting-title">
+          <span class="greeting-prefix">Hello, </span>
+          <span class="name-wrapper">
+            <span id="user-name" class="user-name" tabindex="0" role="button" title="Click to edit your name">Yu Chou</span>
+            <input type="text" id="name-input" class="name-input hidden" maxlength="32" aria-label="Edit your name" />
+            <button id="edit-name-btn" class="edit-btn" aria-label="Edit name" title="Edit name">
+              <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+              </svg>
+            </button>
+          </span>
+        </h1>
+      </div>
+
+      <p class="identity-subtitle" id="dynamic-subtitle">Welcome to your personal space. Take a breath and make today remarkable.</p>
+    </section>
+
+    <!-- Real-Time Dynamic Clock Centerpiece -->
+    <section class="clock-hero-card glass-panel" aria-label="Current Time and Date">
+      <div class="clock-header">
+        <span class="clock-subheading">LOCAL SYSTEM TIME</span>
+        <div class="timezone-badge" id="timezone-badge">
+          <svg class="icon-tiny" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+          <span id="tz-text">UTC+8</span>
+        </div>
+      </div>
+
+      <!-- Massive Digital Clock Display -->
+      <div class="clock-digital-face" id="digital-clock" aria-live="off">
+        <div class="digits-group">
+          <span class="clock-digit" id="clock-hours">10</span>
+          <span class="clock-separator">:</span>
+          <span class="clock-digit" id="clock-minutes">15</span>
+          <span class="clock-separator">:</span>
+          <span class="clock-digit clock-seconds" id="clock-seconds">42</span>
+        </div>
+        <span class="clock-period" id="clock-period">AM</span>
+      </div>
+
+      <!-- Seconds Smooth Progress Bar -->
+      <div class="seconds-track-container" title="Current minute progress">
+        <div class="seconds-bar" id="seconds-progress-bar"></div>
+        <div class="seconds-labels">
+          <span>00s</span>
+          <span id="seconds-counter">42s</span>
+          <span>60s</span>
+        </div>
+      </div>
+
+      <!-- Full Date & Calendar Context -->
+      <div class="date-strip">
+        <div class="date-main">
+          <svg class="icon-small text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          <span class="date-day-name" id="date-weekday">Wednesday</span>,
+          <span class="date-full-text" id="date-calendar">September 16, 2026</span>
+        </div>
+        <div class="date-chips">
+          <span class="badge-chip" id="day-of-year-chip">Day 259</span>
+          <span class="badge-chip" id="week-chip">Week 38</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Cards Grid: Focus & Daily Inspiration -->
+    <section class="cards-grid">
+      <!-- Daily Focus Card -->
+      <article class="glass-panel card-item focus-card">
+        <div class="card-header">
+          <div class="card-title-group">
+            <span class="card-icon-bubble">🎯</span>
+            <h2 class="card-title">Today's Focus</h2>
+          </div>
+          <span class="card-tag">Intent</span>
+        </div>
+        <p class="card-desc">What is the single most meaningful thing you want to accomplish today?</p>
+        
+        <div class="focus-input-wrapper">
+          <input type="text" id="focus-input" class="glass-input" placeholder="e.g., Ship the landing page design..." maxlength="100" />
+          <button id="save-focus-btn" class="action-btn" title="Save focus">Set</button>
+        </div>
+        
+        <div class="focus-display-box hidden" id="focus-display-box">
+          <label class="custom-checkbox">
+            <input type="checkbox" id="focus-checkbox">
+            <span class="checkmark"></span>
+          </label>
+          <span class="focus-text" id="saved-focus-text"></span>
+          <button id="clear-focus-btn" class="clear-btn" title="Clear focus" aria-label="Clear focus">✕</button>
+        </div>
+      </article>
+
+      <!-- Daily Inspiration / Quote Card -->
+      <article class="glass-panel card-item quote-card">
+        <div class="card-header">
+          <div class="card-title-group">
+            <span class="card-icon-bubble">💡</span>
+            <h2 class="card-title">Daily Spark</h2>
+          </div>
+          <button id="refresh-quote-btn" class="refresh-quote-btn" title="Get new inspiration" aria-label="Shuffle quote">
+            <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="23 4 23 10 17 10"></polyline>
+              <polyline points="1 20 1 14 7 14"></polyline>
+              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+            </svg>
+          </button>
+        </div>
+        <blockquote class="quote-body">
+          <p class="quote-text" id="quote-text">"Time is what we want most, but what we use worst."</p>
+          <cite class="quote-author" id="quote-author">— William Penn</cite>
+        </blockquote>
+      </article>
+    </section>
+
+    <!-- Footer Information -->
+    <footer class="dashboard-footer">
+      <span>Personal Workspace • Crafted with precision</span>
+      <span class="dot-separator">•</span>
+      <span id="live-indicator">Clock running in real-time</span>
+    </footer>
+  </main>
+
+  <!-- Interactive Toast Notification -->
+  <div id="toast" class="toast" role="alert" aria-live="polite">
+    <span class="toast-icon">✓</span>
+    <span class="toast-message" id="toast-msg">Action completed</span>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
