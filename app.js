@@ -13,7 +13,7 @@ const STORAGE_KEYS = {
   FOCUS_DONE: 'personal_hub_focus_done'
 };
 
-const DEFAULT_NAME = 'Yu Chou';
+const DEFAULT_NAME = 'Chou Yu';
 
 // Curated Wisdom & Sparks
 const QUOTES = [
@@ -94,7 +94,7 @@ function showToast(message) {
 // ==========================================================================
 function initNameSystem() {
   let savedName = localStorage.getItem(STORAGE_KEYS.USER_NAME);
-  if (!savedName || savedName === 'Alex Morgan') {
+  if (!savedName || savedName === 'Alex Morgan' || savedName === 'Yu Chou') {
     savedName = DEFAULT_NAME;
     localStorage.setItem(STORAGE_KEYS.USER_NAME, DEFAULT_NAME);
   }

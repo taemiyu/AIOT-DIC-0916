@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A personal dashboard featuring live real-time clock, personalized greeting, customizable name, and daily focus widget.">
-  <title>Yu Chou • Personal Hub</title>
+  <meta name="description" content="Chou Yu - 個人首頁 | 資訊工程研究所 碩一 • Python • Java • Machine Learning">
+  <title>Chou Yu • Personal Hub</title>
   
   <!-- Google Fonts Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="style.css">
 </head>
@@ -49,33 +49,142 @@
       </div>
     </header>
 
-    <!-- Main Identity & Greeting Section -->
-    <section class="identity-section" aria-labelledby="greeting-header">
-      <div class="greeting-badge" id="greeting-badge">
-        <span class="greeting-icon" id="greeting-icon">✨</span>
-        <span class="greeting-period" id="greeting-period">Good day</span>
+    <!-- 👤 1. Profile Section -->
+    <section class="profile-hero-card glass-panel" aria-label="Profile Section">
+      <div class="profile-avatar-container">
+        <div class="avatar-ring">
+          <img src="avatar.svg" alt="Chou Yu Avatar" class="profile-avatar-img" width="128" height="128">
+        </div>
+        <div class="avatar-status-badge" title="Status: Chill & Sleepy">😴</div>
       </div>
 
-      <div class="name-display-container">
-        <h1 id="greeting-header" class="greeting-title">
-          <span class="greeting-prefix">Hello, </span>
-          <span class="name-wrapper">
-            <span id="user-name" class="user-name" tabindex="0" role="button" title="Click to edit your name">Yu Chou</span>
-            <input type="text" id="name-input" class="name-input hidden" maxlength="32" aria-label="Edit your name" />
-            <button id="edit-name-btn" class="edit-btn" aria-label="Edit name" title="Edit name">
-              <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-              </svg>
-            </button>
-          </span>
-        </h1>
-      </div>
+      <div class="profile-content">
+        <div class="greeting-badge" id="greeting-badge">
+          <span class="greeting-icon" id="greeting-icon">✨</span>
+          <span class="greeting-period" id="greeting-period">Good day</span>
+        </div>
 
-      <p class="identity-subtitle" id="dynamic-subtitle">Welcome to your personal space. Take a breath and make today remarkable.</p>
+        <div class="name-display-container">
+          <h1 id="greeting-header" class="greeting-title">
+            <span class="greeting-prefix">Hello, </span>
+            <span class="name-wrapper">
+              <span id="user-name" class="user-name" tabindex="0" role="button" title="Click to edit your name">Chou Yu</span>
+              <input type="text" id="name-input" class="name-input hidden" maxlength="32" aria-label="Edit your name" />
+              <button id="edit-name-btn" class="edit-btn" aria-label="Edit name" title="Edit name">
+                <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                </svg>
+              </button>
+            </span>
+          </h1>
+        </div>
+
+        <!-- Major & Department -->
+        <div class="profile-department-tag">
+          <span class="dept-icon">🎓</span>
+          <span class="dept-title">資訊工程研究所 碩一</span>
+          <span class="dept-en">Computer Science & Information Engineering • M.S.</span>
+        </div>
+
+        <!-- Short Bio -->
+        <div class="profile-bio-box">
+          <p class="bio-main">「 大家好 我喜歡睡覺 😴💤 」</p>
+          <p class="identity-subtitle" id="dynamic-subtitle">A fresh dawn is here. Let's make today purposeful, focused, and inspiring.</p>
+        </div>
+      </div>
     </section>
 
-    <!-- Real-Time Dynamic Clock Centerpiece -->
+    <!-- 🛠 2. Skills Section -->
+    <section class="skills-section" aria-label="Skills & Expertise">
+      <div class="section-title-wrapper">
+        <h2 class="section-title">
+          <span class="title-icon">🛠</span>
+          <span>Core Skills</span>
+        </h2>
+        <span class="section-tag">3 Key Capabilities</span>
+      </div>
+
+      <div class="skills-grid">
+        <!-- Skill 1: Python -->
+        <article class="glass-panel skill-card">
+          <div class="skill-card-top">
+            <div class="skill-icon-bubble python-bubble">
+              <svg viewBox="0 0 24 24" class="skill-svg-icon" fill="currentColor">
+                <path d="M11.91 2C6.91 2 7.23 4.17 7.23 4.17L7.24 6.42H12V7.17H5.16S2 6.81 2 11.83C2 16.85 4.77 16.63 4.77 16.63H6.42V14.3C6.42 14.3 6.33 11.51 9.17 11.51H13.88S16.55 11.63 16.55 9.03V4.38S16.91 2 11.91 2M9.34 3.42C9.8 3.42 10.17 3.79 10.17 4.25C10.17 4.71 9.8 5.08 9.34 5.08C8.88 5.08 8.5 4.71 8.5 4.25C8.5 3.79 8.88 3.42 9.34 3.42M12.09 22C17.09 22 16.77 19.83 16.77 19.83L16.76 17.58H12V16.83H18.84S22 17.19 22 12.17C22 7.15 19.23 7.37 19.23 7.37H17.58V9.7C17.58 9.7 17.67 12.49 14.83 12.49H10.12S7.45 12.37 7.45 14.97V19.62S7.09 22 12.09 22M14.66 20.58C14.2 20.58 13.83 20.21 13.83 19.75C13.83 19.29 14.2 18.92 14.66 18.92C15.12 18.92 15.5 19.29 15.5 19.75C15.5 20.21 15.12 20.58 14.66 20.58Z"/>
+              </svg>
+            </div>
+            <div class="skill-meta">
+              <h3 class="skill-name">Python</h3>
+              <span class="skill-level-badge">Primary Language</span>
+            </div>
+          </div>
+          <p class="skill-desc">Data analysis, AI pipelines, model prototyping, automation scripting, and scientific computing with PyTorch & NumPy.</p>
+          <div class="skill-tags">
+            <span class="mini-tag">PyTorch</span>
+            <span class="mini-tag">Data Science</span>
+            <span class="mini-tag">Scripting</span>
+          </div>
+        </article>
+
+        <!-- Skill 2: Java -->
+        <article class="glass-panel skill-card">
+          <div class="skill-card-top">
+            <div class="skill-icon-bubble java-bubble">
+              <svg viewBox="0 0 24 24" class="skill-svg-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                <line x1="6" y1="1" x2="6" y2="4"></line>
+                <line x1="10" y1="1" x2="10" y2="4"></line>
+                <line x1="14" y1="1" x2="14" y2="4"></line>
+              </svg>
+            </div>
+            <div class="skill-meta">
+              <h3 class="skill-name">Java</h3>
+              <span class="skill-level-badge">Systems & OOP</span>
+            </div>
+          </div>
+          <p class="skill-desc">Object-oriented architecture, concurrent programming, robust backend development, data structures, and algorithm design.</p>
+          <div class="skill-tags">
+            <span class="mini-tag">OOP</span>
+            <span class="mini-tag">Backend</span>
+            <span class="mini-tag">Data Structures</span>
+          </div>
+        </article>
+
+        <!-- Skill 3: Machine Learning -->
+        <article class="glass-panel skill-card">
+          <div class="skill-card-top">
+            <div class="skill-icon-bubble ml-bubble">
+              <svg viewBox="0 0 24 24" class="skill-svg-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                <rect x="9" y="9" width="6" height="6"></rect>
+                <line x1="9" y1="1" x2="9" y2="4"></line>
+                <line x1="15" y1="1" x2="15" y2="4"></line>
+                <line x1="9" y1="20" x2="9" y2="23"></line>
+                <line x1="15" y1="20" x2="15" y2="23"></line>
+                <line x1="20" y1="9" x2="23" y2="9"></line>
+                <line x1="20" y1="14" x2="23" y2="14"></line>
+                <line x1="1" y1="9" x2="4" y2="9"></line>
+                <line x1="1" y1="14" x2="4" y2="14"></line>
+              </svg>
+            </div>
+            <div class="skill-meta">
+              <h3 class="skill-name">Machine Learning</h3>
+              <span class="skill-level-badge">AI Research</span>
+            </div>
+          </div>
+          <p class="skill-desc">Deep learning architectures, neural network training, computer vision, natural language processing, and model optimization.</p>
+          <div class="skill-tags">
+            <span class="mini-tag">Deep Learning</span>
+            <span class="mini-tag">Neural Nets</span>
+            <span class="mini-tag">Computer Vision</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ⏰ 3. Real-Time Dynamic Clock Centerpiece -->
     <section class="clock-hero-card glass-panel" aria-label="Current Time and Date">
       <div class="clock-header">
         <span class="clock-subheading">LOCAL SYSTEM TIME</span>
@@ -94,9 +203,9 @@
         <div class="digits-group">
           <span class="clock-digit" id="clock-hours">10</span>
           <span class="clock-separator">:</span>
-          <span class="clock-digit" id="clock-minutes">15</span>
+          <span class="clock-digit" id="clock-minutes">51</span>
           <span class="clock-separator">:</span>
-          <span class="clock-digit clock-seconds" id="clock-seconds">42</span>
+          <span class="clock-digit clock-seconds" id="clock-seconds">43</span>
         </div>
         <span class="clock-period" id="clock-period">AM</span>
       </div>
@@ -106,7 +215,7 @@
         <div class="seconds-bar" id="seconds-progress-bar"></div>
         <div class="seconds-labels">
           <span>00s</span>
-          <span id="seconds-counter">42s</span>
+          <span id="seconds-counter">43s</span>
           <span>60s</span>
         </div>
       </div>
@@ -130,7 +239,7 @@
       </div>
     </section>
 
-    <!-- Interactive Cards Grid: Focus & Daily Inspiration -->
+    <!-- 🎯 4. Interactive Cards Grid: Focus & 5. Daily Spark -->
     <section class="cards-grid">
       <!-- Daily Focus Card -->
       <article class="glass-panel card-item focus-card">
@@ -144,7 +253,7 @@
         <p class="card-desc">What is the single most meaningful thing you want to accomplish today?</p>
         
         <div class="focus-input-wrapper">
-          <input type="text" id="focus-input" class="glass-input" placeholder="e.g., Ship the landing page design..." maxlength="100" />
+          <input type="text" id="focus-input" class="glass-input" placeholder="e.g., Code a new neural model or take a good nap..." maxlength="100" />
           <button id="save-focus-btn" class="action-btn" title="Save focus">Set</button>
         </div>
         
@@ -174,15 +283,17 @@
           </button>
         </div>
         <blockquote class="quote-body">
-          <p class="quote-text" id="quote-text">"Time is what we want most, but what we use worst."</p>
-          <cite class="quote-author" id="quote-author">— William Penn</cite>
+          <p class="quote-text" id="quote-text">"Simplicity is the prerequisite for reliability."</p>
+          <cite class="quote-author" id="quote-author">— Edsger W. Dijkstra</cite>
         </blockquote>
       </article>
     </section>
 
     <!-- Footer Information -->
     <footer class="dashboard-footer">
-      <span>Personal Workspace • Crafted with precision</span>
+      <span>Chou Yu • 資訊工程研究所 碩一</span>
+      <span class="dot-separator">•</span>
+      <span>Python • Java • Machine Learning</span>
       <span class="dot-separator">•</span>
       <span id="live-indicator">Clock running in real-time</span>
     </footer>

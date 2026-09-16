@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Deep Aurora Glassmorphism Design System
+   Deep Aurora Glassmorphism Design System - Chou Yu Personal Hub
    ========================================================================== */
 
 :root {
@@ -22,21 +22,23 @@
   --accent-purple: #c084fc;
   --accent-emerald: #34d399;
   --accent-amber: #fbbf24;
+  --accent-rose: #fb7185;
 
   --gradient-aurora: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
-  --gradient-text: linear-gradient(135deg, #ffffff 30%, #cbd5e1 100%);
-  --gradient-clock: linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%);
+  --gradient-python: linear-gradient(135deg, #38bdf8 0%, #fbbf24 100%);
+  --gradient-java: linear-gradient(135deg, #f97316 0%, #ef4444 100%);
+  --gradient-ml: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);
 
   /* Shadow & Blur Tokens */
   --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.25);
   --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.35);
   --shadow-lg: 0 24px 64px -12px rgba(0, 0, 0, 0.6);
-  --glow-cyan: 0 0 35px rgba(56, 189, 248, 0.2);
-  --glow-purple: 0 0 40px rgba(192, 132, 252, 0.22);
+  --glow-cyan: 0 0 35px rgba(56, 189, 248, 0.25);
+  --glow-purple: 0 0 40px rgba(192, 132, 252, 0.25);
 
   /* Fonts */
-  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Outfit', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Plus Jakarta Sans', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
   /* Transitions */
@@ -69,7 +71,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem 1.25rem;
+  padding: 2.5rem 1.25rem;
 }
 
 /* ==========================================================================
@@ -161,7 +163,7 @@ body {
   max-width: 960px;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2.25rem;
   margin: 0 auto;
 }
 
@@ -173,7 +175,7 @@ body {
   border: 1px solid var(--border-glass);
   border-radius: 1.5rem;
   box-shadow: var(--shadow-lg), inset 0 1px 0 var(--border-highlight);
-  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal), transform var(--transition-normal);
 }
 
 .glass-panel:hover {
@@ -240,6 +242,7 @@ body {
   padding: 0.4rem 0.85rem;
   border-radius: 9999px;
   cursor: pointer;
+  text-decoration: none;
   transition: all var(--transition-fast);
 }
 
@@ -261,21 +264,93 @@ body {
 }
 
 /* ==========================================================================
-   Identity & Greeting Header
+   👤 1. Profile Hero Card
    ========================================================================== */
 
-.identity-section {
+.profile-hero-card {
+  padding: 2.25rem;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-hero-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-aurora);
+}
+
+.profile-avatar-container {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.avatar-ring {
+  width: 136px;
+  height: 136px;
+  border-radius: 50%;
+  padding: 4px;
+  background: var(--gradient-aurora);
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.avatar-ring:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 45px rgba(192, 132, 252, 0.5);
+}
+
+.profile-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #090d16;
+  display: block;
+}
+
+.avatar-status-badge {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 36px;
+  height: 36px;
+  background: rgba(16, 23, 41, 0.95);
+  border: 2px solid var(--accent-purple);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  animation: floatStatus 3s ease-in-out infinite alternate;
+}
+
+@keyframes floatStatus {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-4px); }
+}
+
+.profile-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
   gap: 0.75rem;
-  padding: 0.5rem 1rem;
+  flex: 1;
 }
 
 .greeting-badge {
   display: inline-flex;
   align-items: center;
+  align-self: flex-start;
   gap: 0.5rem;
   padding: 0.35rem 1rem;
   background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(129, 140, 248, 0.12));
@@ -292,23 +367,16 @@ body {
   font-size: 1rem;
 }
 
-.name-display-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .greeting-title {
   font-family: var(--font-heading);
-  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-size: clamp(2.25rem, 4.5vw, 3.25rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.15;
   color: var(--text-primary);
-  display: inline-flex;
+  display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
   gap: 0.4rem;
 }
 
@@ -380,9 +448,8 @@ body {
 
 .name-input {
   font-family: var(--font-heading);
-  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-size: clamp(2rem, 4.5vw, 3rem);
   font-weight: 800;
-  letter-spacing: -0.03em;
   background: rgba(16, 23, 41, 0.85);
   color: var(--text-primary);
   border: 2px solid var(--accent-cyan);
@@ -390,22 +457,210 @@ body {
   padding: 0 0.5rem;
   outline: none;
   box-shadow: var(--glow-cyan);
-  text-align: center;
-  max-width: 380px;
+  max-width: 340px;
 }
 
-.hidden {
-  display: none !important;
+/* Department & Bio */
+.profile-department-tag {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  padding: 0.45rem 0.95rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+}
+
+.dept-icon {
+  font-size: 1.1rem;
+}
+
+.dept-title {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+}
+
+.dept-en {
+  font-size: 0.8rem;
+  color: var(--accent-cyan);
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.profile-bio-box {
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 3px solid var(--accent-purple);
+  padding: 0.75rem 1rem;
+  border-radius: 0 0.75rem 0.75rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.bio-main {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--accent-amber);
+  letter-spacing: 0.02em;
 }
 
 .identity-subtitle {
   color: var(--text-secondary);
-  font-size: 1.05rem;
-  max-width: 580px;
+  font-size: 0.925rem;
+  line-height: 1.45;
 }
 
 /* ==========================================================================
-   Clock Hero Centerpiece
+   🛠 2. Skills Section
+   ========================================================================== */
+
+.skills-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.section-title-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.5rem;
+}
+
+.section-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.title-icon {
+  font-size: 1.35rem;
+}
+
+.section-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--accent-indigo);
+  background: rgba(129, 140, 248, 0.12);
+  border: 1px solid rgba(129, 140, 248, 0.25);
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.skill-card {
+  padding: 1.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+}
+
+.skill-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-cyan);
+  box-shadow: var(--shadow-lg), var(--glow-cyan);
+}
+
+.skill-card-top {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.skill-icon-bubble {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.python-bubble {
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: var(--accent-cyan);
+}
+
+.java-bubble {
+  background: rgba(249, 115, 22, 0.12);
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  color: #fb923c;
+}
+
+.ml-bubble {
+  background: rgba(192, 132, 252, 0.12);
+  border: 1px solid rgba(192, 132, 252, 0.3);
+  color: var(--accent-purple);
+}
+
+.skill-svg-icon {
+  width: 26px;
+  height: 26px;
+}
+
+.skill-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.skill-name {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.skill-level-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+}
+
+.skill-desc {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  flex: 1;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  padding-top: 0.25rem;
+}
+
+.mini-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  color: var(--accent-cyan);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+}
+
+/* ==========================================================================
+   ⏰ 3. Clock Hero Centerpiece
    ========================================================================== */
 
 .clock-hero-card {
@@ -582,7 +837,7 @@ body {
 }
 
 /* ==========================================================================
-   Interactive Cards Grid (Focus & Inspiration)
+   🎯 4. Interactive Cards Grid (Focus & Daily Spark)
    ========================================================================== */
 
 .cards-grid {
@@ -832,6 +1087,7 @@ body {
   font-size: 0.8125rem;
   color: var(--text-muted);
   padding: 1rem 0;
+  text-align: center;
 }
 
 .dot-separator {
@@ -906,9 +1162,44 @@ body {
   color: var(--accent-cyan);
 }
 
+.hidden {
+  display: none !important;
+}
+
 /* ==========================================================================
    Responsive Adjustments
    ========================================================================== */
+
+@media (max-width: 768px) {
+  .profile-hero-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 1.75rem 1.25rem;
+  }
+
+  .profile-content {
+    align-items: center;
+  }
+
+  .greeting-badge {
+    align-self: center;
+  }
+
+  .greeting-title {
+    justify-content: center;
+  }
+
+  .profile-department-tag {
+    justify-content: center;
+  }
+
+  .profile-bio-box {
+    border-left: none;
+    border-top: 2px solid var(--accent-purple);
+    border-radius: 0 0 0.75rem 0.75rem;
+  }
+}
 
 @media (max-width: 640px) {
   body {
