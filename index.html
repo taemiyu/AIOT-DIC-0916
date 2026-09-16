@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
   <!-- Animated Aurora Background Mesh -->
@@ -53,15 +53,18 @@
     <section class="profile-hero-card glass-panel" aria-label="Profile Section">
       <div class="profile-avatar-container">
         <div class="avatar-ring">
-          <img src="avatar.svg" alt="Chou Yu Avatar" class="profile-avatar-img" width="128" height="128">
+          <img src="avatar.svg" alt="Chou Yu Avatar" class="profile-avatar-img" width="130" height="130">
         </div>
         <div class="avatar-status-badge" title="Status: Chill & Sleepy">😴</div>
       </div>
 
       <div class="profile-content">
-        <div class="greeting-badge" id="greeting-badge">
-          <span class="greeting-icon" id="greeting-icon">✨</span>
-          <span class="greeting-period" id="greeting-period">Good day</span>
+        <div class="profile-header-row">
+          <div class="greeting-badge" id="greeting-badge">
+            <span class="greeting-icon" id="greeting-icon">✨</span>
+            <span class="greeting-period" id="greeting-period">Good day</span>
+          </div>
+          <span class="section-badge-pill">👤 1. Profile</span>
         </div>
 
         <div class="name-display-container">
@@ -80,17 +83,23 @@
           </h1>
         </div>
 
-        <!-- Major & Department -->
-        <div class="profile-department-tag">
-          <span class="dept-icon">🎓</span>
-          <span class="dept-title">資訊工程研究所 碩一</span>
-          <span class="dept-en">Computer Science & Information Engineering • M.S.</span>
-        </div>
+        <!-- Explicit Profile Attributes Grid -->
+        <div class="profile-details-grid">
+          <div class="profile-detail-card">
+            <span class="detail-label">👤 姓名 Name</span>
+            <span class="detail-value">Chou Yu</span>
+          </div>
 
-        <!-- Short Bio -->
-        <div class="profile-bio-box">
-          <p class="bio-main">「 大家好 我喜歡睡覺 😴💤 」</p>
-          <p class="identity-subtitle" id="dynamic-subtitle">A fresh dawn is here. Let's make today purposeful, focused, and inspiring.</p>
+          <div class="profile-detail-card">
+            <span class="detail-label">🎓 科系 Major</span>
+            <span class="detail-value">資訊工程研究所 碩一</span>
+          </div>
+
+          <div class="profile-detail-card bio-full-card">
+            <span class="detail-label">💬 簡短自我介紹 About Me</span>
+            <span class="detail-value bio-highlight">大家好 我喜歡睡覺 😴💤</span>
+            <p class="identity-subtitle" id="dynamic-subtitle">A fresh dawn is here. Let's make today purposeful, focused, and inspiring.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -100,9 +109,9 @@
       <div class="section-title-wrapper">
         <h2 class="section-title">
           <span class="title-icon">🛠</span>
-          <span>Core Skills</span>
+          <span>2. Skills • 3 項技能</span>
         </h2>
-        <span class="section-tag">3 Key Capabilities</span>
+        <span class="section-tag">Python • Java • Machine Learning</span>
       </div>
 
       <div class="skills-grid">
@@ -305,6 +314,6 @@
     <span class="toast-message" id="toast-msg">Action completed</span>
   </div>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=3"></script>
 </body>
 </html>

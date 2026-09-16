@@ -460,57 +460,88 @@ body {
   max-width: 340px;
 }
 
-/* Department & Bio */
-.profile-department-tag {
-  display: inline-flex;
-  flex-wrap: wrap;
+.profile-header-row {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
   gap: 0.5rem;
-  background: rgba(56, 189, 248, 0.08);
-  border: 1px solid rgba(56, 189, 248, 0.25);
-  padding: 0.45rem 0.95rem;
-  border-radius: 10px;
-  font-size: 0.95rem;
 }
 
-.dept-icon {
-  font-size: 1.1rem;
+.section-badge-pill {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent-emerald);
+  background: rgba(52, 211, 153, 0.12);
+  border: 1px solid rgba(52, 211, 153, 0.28);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  letter-spacing: 0.04em;
 }
 
-.dept-title {
+/* Explicit Profile Details Grid */
+.profile-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.profile-detail-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.85rem;
+  padding: 0.85rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  transition: all var(--transition-fast);
+}
+
+.profile-detail-card:hover {
+  border-color: var(--accent-cyan);
+  background: rgba(56, 189, 248, 0.06);
+  transform: translateY(-2px);
+}
+
+.bio-full-card {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.08) 0%, rgba(56, 189, 248, 0.05) 100%);
+  border-color: rgba(168, 85, 247, 0.3);
+  border-left: 3px solid var(--accent-purple);
+}
+
+.detail-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent-cyan);
+  font-family: var(--font-mono);
+}
+
+.detail-value {
+  font-size: 1.125rem;
   font-weight: 700;
   color: var(--text-primary);
   font-family: var(--font-heading);
 }
 
-.dept-en {
-  font-size: 0.8rem;
-  color: var(--accent-cyan);
-  font-weight: 500;
-  opacity: 0.9;
-}
-
-.profile-bio-box {
-  background: rgba(255, 255, 255, 0.03);
-  border-left: 3px solid var(--accent-purple);
-  padding: 0.75rem 1rem;
-  border-radius: 0 0.75rem 0.75rem 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.bio-main {
-  font-size: 1.15rem;
-  font-weight: 700;
+.bio-highlight {
+  font-size: 1.25rem;
+  font-weight: 800;
   color: var(--accent-amber);
   letter-spacing: 0.02em;
 }
 
 .identity-subtitle {
   color: var(--text-secondary);
-  font-size: 0.925rem;
+  font-size: 0.9rem;
   line-height: 1.45;
+  margin-top: 0.25rem;
 }
 
 /* ==========================================================================
