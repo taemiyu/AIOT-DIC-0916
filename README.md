@@ -4,6 +4,8 @@ A personal dashboard and live real-time clock built with a **Deep Aurora Glassmo
 
 🔗 **Live Demo**: [https://taemiyu.github.io/AIOT-DIC-0916/](https://taemiyu.github.io/AIOT-DIC-0916/)
 
+![Personal Hub Screenshot](screenshot.png)
+
 ## Features
 
 - **Personalized Greeting**: Dynamic time-of-day greeting for **Yu Chou** (morning, afternoon, evening, night).
